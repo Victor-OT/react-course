@@ -1,11 +1,11 @@
 import { Layout } from "../../Components/Navbar/Layout"
 
-function MyOrders () {
+function SignIn () {
     return (
         <Layout>
-            My Orders
+            Sign In
         </Layout>
     )
 }
 
-export {MyOrders}
+export {SignIn}

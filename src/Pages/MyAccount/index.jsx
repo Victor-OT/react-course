@@ -1,6 +1,10 @@
+import { Layout } from "../../Components/Navbar/Layout"
+
 function MyAccount () {
     return (
-        <div>MyAccount</div>
+        <Layout>
+            My Account
+        </Layout>
     )
 }
 
