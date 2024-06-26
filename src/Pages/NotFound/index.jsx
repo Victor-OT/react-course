@@ -1,5 +1,4 @@
-import { Layout } from "../../Components/Navbar/Layout"
-
+import { Layout } from "../../Components/Layout"
 function NotFound () {
     return (
         <Layout>
