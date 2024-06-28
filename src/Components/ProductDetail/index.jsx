@@ -18,6 +18,16 @@ function ProductDetail () {
                     <XMarkIcon className='size-6'/>
                 </div>
             </div>
+            <div className='flex flex-col items-center'>
+                <figure className='rounded-lg '>
+                    <img src={context.productToShow.image} alt={context.productToShow.title} className='h-60'/>
+                </figure>
+                <p className='flex flex-col p-6'>
+                    <span className='text-xl font-bold'>${context.productToShow.price}</span>
+                    <span className='font-bold text-sm'>{context.productToShow.title}</span>
+                    <span className='text-xs'>{context.productToShow.description}</span>
+                </p>
+            </div>
         </aside>
     )
 }
