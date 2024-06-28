@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
+import { PlusCircleIcon } from "@heroicons/react/24/outline"
 
 function Card (data) {
     const context = useContext(ShoppingCartContext)
@@ -11,9 +12,9 @@ function Card (data) {
                 <img src={data.data.image} alt={data.data.title} 
                 className='rounded-lg w-full h-full object-cover'/>
                 <div 
-                className='absolute top-0 right-0 flex justify-center items-center w-6 h-6 bg-white rounded-full m-2 pb-1 text-xl'
+                className='absolute top-0 right-0 flex justify-center items-center w-6 h-6 m-2'
                 onClick={() => context.setCount(context.count + 1)}>
-                    +
+                    <PlusCircleIcon className='text-black bg-white rounded-full size-6'/>
                 </div>
             </figure>
             <p className='flex justify-between items-center'>

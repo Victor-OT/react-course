@@ -8,7 +8,7 @@ function ProductDetail () {
                 <h2 className='font-medium text-xl'>
                     Detail
                 </h2>
-                <XMarkIcon className='size-4'/>
+                <XMarkIcon className='size-6'/>
             </div>
         </aside>
     )
