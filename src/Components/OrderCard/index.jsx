@@ -19,7 +19,9 @@ function OrderCard (props) {
                 <p className='text-lg font-medium'>
                     ${price}
                 </p>
-                <XMarkIcon className='size-5'/>
+                <div className='cursor-pointer'>
+                    <XMarkIcon className='size-5'/>
+                </div>
             </div>
         </div>
     )
