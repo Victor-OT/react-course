@@ -24,6 +24,7 @@ function CheckoutSideMenu () {
                     context.cartProducts.map((product) => (
                         <OrderCard 
                         key={product.id} 
+                        id={product.id} 
                         imgUrl={product.image}
                         title={product.title}
                         price={product.price}
