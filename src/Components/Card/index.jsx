@@ -10,6 +10,12 @@ function Card (data) {
         context.setProductToShow(productDetail)
     }
 
+    const addCartProducts = (productData) => {
+        context.setCartProducts([...context.cartProducts, productData])
+        context.setCount(context.count + 1)
+        console.log('CART: ', context.cartProducts)
+    }
+
     return (
         <div
         onClick={() => showProduct(data.data)} 
@@ -20,7 +26,7 @@ function Card (data) {
                 className='rounded-lg w-full h-full object-cover'/>
                 <div 
                 className='absolute top-0 right-0 flex justify-center items-center w-6 h-6 m-2'
-                onClick={() => context.setCount(context.count + 1)}>
+                onClick={() => addCartProducts(data.data)}>
                     <PlusCircleIcon className='text-black bg-white rounded-full size-6'/>
                 </div>
             </figure>
