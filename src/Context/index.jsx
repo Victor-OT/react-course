@@ -22,6 +22,9 @@ function ShoppingCartProvider ({children}) {
     //Sopping Cart - Add Products to Cart
     const [cartProducts, setCartProducts] = useState([])
 
+    //Shopping Cart - Order Checkout
+    const [order, setOrder] = useState([])
+
     return (
         <ShoppingCartContext.Provider value={{
             count,
@@ -35,7 +38,9 @@ function ShoppingCartProvider ({children}) {
             productToShow,
             setProductToShow,
             cartProducts,
-            setCartProducts
+            setCartProducts,
+            order,
+            setOrder
         }}>
             {children}
         </ShoppingCartContext.Provider>
