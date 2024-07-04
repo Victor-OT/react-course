@@ -66,7 +66,9 @@ function ShoppingCartProvider ({children}) {
             setOrder,
             items,
             searchedItem,
-            setSearchedItem
+            setSearchedItem,
+            filteredItems,
+            setFilteredItems
         }}>
             {children}
         </ShoppingCartContext.Provider>

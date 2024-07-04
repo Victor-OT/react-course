@@ -6,6 +6,34 @@ import { ProductDetail } from "../../Components/ProductDetail"
 
 function Home () {
     const context = useContext(ShoppingCartContext)
+    
+    const renderView = () => {
+        if(context.searchedItem?.length > 0) {
+            if(context.filteredItems?.length > 0) {
+                return (
+                    context.filteredItems?.map(item => (
+                        <Card 
+                        data={item}
+                        key={item.id}
+                        />
+                    ))
+                )
+            }
+            else {
+                return(<div>Not Found :(</div>)
+            }
+        }
+        else {
+            return (
+                context.items?.map(item => (
+                    <Card 
+                    data={item}
+                    key={item.id}
+                    />
+                ))
+            )
+        }
+    }
 
     return (
         <Layout>
@@ -15,12 +43,7 @@ function Home () {
                 onChange={(event) => context.setSearchedItem(event.target.value)} />
             <div className='grid grid-cols-4 gap-2 w-full max-w-screen-lg'>
                 {
-                    context.items?.map(item => (
-                        <Card 
-                        data={item}
-                        key={item.id}
-                        />
-                    ))
+                    renderView()
                 }   
             </div>
             <ProductDetail />
