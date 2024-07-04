@@ -1,8 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const ShoppingCartContext = createContext()
 
 function ShoppingCartProvider ({children}) {
+    //Get Products
+    const [items, setItems] = useState(null)
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(data => setItems(data))
+    }, [])
+
+    //Search Products by Title
+    const [searchedProduct, setSearchedProduct] = useState(null)
+    console.log('SEARCHING: ',searchedProduct)
+
     //Shopping Cart Counter
     const [count, setCount] = useState(0)
 
@@ -40,7 +53,10 @@ function ShoppingCartProvider ({children}) {
             cartProducts,
             setCartProducts,
             order,
-            setOrder
+            setOrder,
+            items,
+            searchedProduct,
+            setSearchedProduct
         }}>
             {children}
         </ShoppingCartContext.Provider>
