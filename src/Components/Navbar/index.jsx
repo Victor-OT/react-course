@@ -37,11 +37,29 @@ function Navbar () {
                 </li>
                 <li>
                     <NavLink 
-                    to='/clothes'
+                    to='/mens-clothing'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
-                        Clothes
+                        Men's Clothing
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                    to='/womens-clothing'
+                    className={({isActive}) => 
+                        isActive ? activeStyle : undefined
+                    }>
+                        Women's Clothing
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                    to='/jewelry'
+                    className={({isActive}) => 
+                        isActive ? activeStyle : undefined
+                    }>
+                        Jewelry
                     </NavLink>
                 </li>
                 <li>
@@ -51,33 +69,6 @@ function Navbar () {
                         isActive ? activeStyle : undefined
                     }>
                         Electronics
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to='/furnitures'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        Furnitures
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to='/toys'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to='/others'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        Others
                     </NavLink>
                 </li>
             </ul>
