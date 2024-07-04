@@ -15,6 +15,9 @@ function ShoppingCartProvider ({children}) {
     //Search Products by Title
     const [searchedItem, setSearchedItem] = useState(null)
 
+    //Search Products by Category
+    const [category, setCategory] = useState(null)
+
     //Filter Products
     const [filteredItems, setFilteredItems] = useState(null)
 
@@ -22,9 +25,21 @@ function ShoppingCartProvider ({children}) {
         return items?.filter(item => item.title.toLowerCase().includes(searchedItem.toLowerCase()))
     }
 
+    const filterItemsByCategory = (items, category) => {
+        return items?.filter(item => item.category === category)
+    }
+
     useEffect(() => {
-        if(searchedItem) setFilteredItems(filterItemsByTitle(items, searchedItem))
-    }, [items, searchedItem])
+        if(searchedItem ) {
+            setFilteredItems(filterItemsByTitle(items, searchedItem))
+        }
+        else {
+            setFilteredItems(null)
+        }
+        if(category) setFilteredItems(filterItemsByCategory(items, category))
+    }, [items, searchedItem, category])
+
+    console.log('filtederProducts',filteredItems)
 
     //Shopping Cart Counter
     const [count, setCount] = useState(0)
@@ -68,7 +83,9 @@ function ShoppingCartProvider ({children}) {
             searchedItem,
             setSearchedItem,
             filteredItems,
-            setFilteredItems
+            setFilteredItems,
+            category,
+            setCategory
         }}>
             {children}
         </ShoppingCartContext.Provider>

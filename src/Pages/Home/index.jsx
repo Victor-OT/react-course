@@ -6,7 +6,7 @@ import { ProductDetail } from "../../Components/ProductDetail"
 
 function Home () {
     const context = useContext(ShoppingCartContext)
-    
+
     const renderView = () => {
         if(context.searchedItem?.length > 0) {
             if(context.filteredItems?.length > 0) {
@@ -20,7 +20,7 @@ function Home () {
                 )
             }
             else {
-                return(<div>Not Found :(</div>)
+                return(<div>Not Found :( </div>)
             }
         }
         else {

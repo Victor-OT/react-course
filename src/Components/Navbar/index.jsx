@@ -13,13 +13,15 @@ function Navbar () {
             <ul className='flex items-center gap-3'>
                 <li className='text-lg font-bold'>
                     <NavLink 
-                    to='/'>
+                    to='/'
+                    onClick={() => context.setCategory(null)}>
                         Shoppi
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
                     to='/'
+                    onClick={() => context.setCategory(null)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -29,6 +31,7 @@ function Navbar () {
                 <li>
                     <NavLink 
                     to='/all'
+                    onClick={() => context.setCategory(null)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -38,6 +41,7 @@ function Navbar () {
                 <li>
                     <NavLink 
                     to='/mens-clothing'
+                    onClick={() => context.setCategory(`men's clothing`)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -47,6 +51,7 @@ function Navbar () {
                 <li>
                     <NavLink 
                     to='/womens-clothing'
+                    onClick={() => context.setCategory(`women's clothing`)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -56,15 +61,17 @@ function Navbar () {
                 <li>
                     <NavLink 
                     to='/jewelry'
+                    onClick={() => context.setCategory(`jewelery`)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
-                        Jewelry
+                        Jewelery
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
                     to='/electronics'
+                    onClick={() => context.setCategory(`electronics`)}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
