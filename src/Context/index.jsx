@@ -29,17 +29,28 @@ function ShoppingCartProvider ({children}) {
         return items?.filter(item => item.category === category)
     }
 
+    const orderBy = (searchType, items, searchedItem, category) => {
+        if (!searchType) {
+            return items
+        }
+        if (searchType === 'BY_TITLE') {
+            return filterItemsByTitle(items, searchedItem)
+        }
+        if (searchType === 'BY_CATEGORY') {
+            return filterItemsByCategory(items, category)
+        }
+        if (searchType === 'BY_TITLE_AND_CATEGORY') {
+            return filterItemsByCategory(items, category).filter(item => item.title.toLowerCase().includes(searchedItem.toLowerCase()))
+        }
+    }
+
     useEffect(() => {
-        if(searchedItem ) {
-            setFilteredItems(filterItemsByTitle(items, searchedItem))
-        }
-        else {
-            setFilteredItems(null)
-        }
-        if(category) setFilteredItems(filterItemsByCategory(items, category))
+        if(!searchedItem && !category) setFilteredItems(orderBy(null, items, searchedItem, category))     
+        if(searchedItem && !category) setFilteredItems(orderBy('BY_TITLE', items, searchedItem, category))     
+        if(!searchedItem && category) setFilteredItems(orderBy('BY_CATEGORY', items, searchedItem, category))     
+        if(searchedItem && category) setFilteredItems(orderBy('BY_TITLE_AND_CATEGORY', items, searchedItem, category))     
     }, [items, searchedItem, category])
 
-    console.log('filtederProducts',filteredItems)
 
     //Shopping Cart Counter
     const [count, setCount] = useState(0)
