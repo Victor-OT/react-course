@@ -12,7 +12,7 @@ function Home () {
             <h1 className='mb-4 text-lg font-semibold'>¡Best Store in the World!</h1>
             <input type="text" placeholder="Search a Product"
                 className='border border-black rounded-lg focus:outline-none mb-4 px-2'
-                onChange={(event) => context.setSearchedProduct(event.target.value)} />
+                onChange={(event) => context.setSearchedItem(event.target.value)} />
             <div className='grid grid-cols-4 gap-2 w-full max-w-screen-lg'>
                 {
                     context.items?.map(item => (

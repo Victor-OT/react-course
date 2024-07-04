@@ -13,8 +13,18 @@ function ShoppingCartProvider ({children}) {
     }, [])
 
     //Search Products by Title
-    const [searchedProduct, setSearchedProduct] = useState(null)
-    console.log('SEARCHING: ',searchedProduct)
+    const [searchedItem, setSearchedItem] = useState(null)
+
+    //Filter Products
+    const [filteredItems, setFilteredItems] = useState(null)
+
+    const filterItemsByTitle = (items, searchedItem) => {
+        return items?.filter(item => item.title.toLowerCase().includes(searchedItem.toLowerCase()))
+    }
+
+    useEffect(() => {
+        if(searchedItem) setFilteredItems(filterItemsByTitle(items, searchedItem))
+    }, [items, searchedItem])
 
     //Shopping Cart Counter
     const [count, setCount] = useState(0)
@@ -55,8 +65,8 @@ function ShoppingCartProvider ({children}) {
             order,
             setOrder,
             items,
-            searchedProduct,
-            setSearchedProduct
+            searchedItem,
+            setSearchedItem
         }}>
             {children}
         </ShoppingCartContext.Provider>
