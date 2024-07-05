@@ -7,6 +7,70 @@ function Navbar () {
     const activeStyle = 'underline underline-offset-4'
     const context = useContext(ShoppingCartContext)
 
+    const signOut = localStorage.getItem('sign-out')
+    const parsedSignOut = JSON.parse(signOut)
+    const isUserSignOut = context.signOut || parsedSignOut
+
+    const renderView = () => {
+        if (isUserSignOut) {
+            return (
+                <li>
+                    <NavLink 
+                    to='/sign-in'
+                    className={({isActive}) => 
+                        isActive ? activeStyle : undefined
+                    }
+                    onClick={() => handleSignOut()}>
+                        Sign Out
+                    </NavLink>
+                </li>   
+            )
+        } else {
+            return (
+                <>
+                     <li className='text-black/60'>
+                    crowbreaker96@hotmail.com
+                    </li>
+                    <li>
+                        <NavLink 
+                        to='/my-orders'
+                        className={({isActive}) => 
+                            isActive ? activeStyle : undefined
+                        }>
+                            My Orders
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                        to='/my-account'
+                        className={({isActive}) => 
+                            isActive ? activeStyle : undefined
+                        }>
+                            My Account
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                        to='/sign-in'
+                        className={({isActive}) => 
+                            isActive ? activeStyle : undefined
+                        }
+                        onClick={() => handleSignOut()}>
+                            Sign Out
+                        </NavLink>
+                    </li>
+                </>
+            )
+        }
+    }
+
+    const handleSignOut = () => {
+        console.log('Hola')
+        const stringifiedSignOut = JSON.stringify(true)
+        localStorage.setItem('sign-out', stringifiedSignOut)
+        context.setSignOut(true)
+    }
+
     return (
         <nav
         className='flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm'>
@@ -81,36 +145,7 @@ function Navbar () {
             </ul>
 
             <ul className='flex items-center gap-3'>
-                <li className='text-black/60'>
-                    crowbreaker96@hotmail.com
-                </li>
-                <li>
-                    <NavLink 
-                    to='/my-orders'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        My Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to='/my-account'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        My Account
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    to='/sign-in'
-                    className={({isActive}) => 
-                        isActive ? activeStyle : undefined
-                    }>
-                        Sign In
-                    </NavLink>
-                </li>
+                {renderView()}
                 <li className='flex gap-1 items-center'>
                     <ShoppingCartIcon className='size-4' />
                     <div>{context.count}</div>
