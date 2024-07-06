@@ -26,7 +26,7 @@ function Navbar () {
             return (
                 <>
                      <li className='text-black/60'>
-                    crowbreaker96@hotmail.com
+                    {parsedAccount?.email}
                     </li>
                     <li>
                         <NavLink 
@@ -82,7 +82,7 @@ function Navbar () {
 
     return (
         <nav
-        className='flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm'>
+        className='flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm bg-white'>
             <ul className='flex items-center gap-3'>
                 <li className='text-lg font-bold'>
                     <NavLink 

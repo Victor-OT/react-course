@@ -56,14 +56,20 @@ function SignIn () {
                         <button 
                             className='bg-black disabled:bg-black/40 w-60 h-10 rounded-lg text-white'
                             disabled={!hasUserAnAccount}
-                            onClick={() => handleSignIn()}>
+                            onClick={() => {
+                                handleSignIn()
+                                context.setCategory(null)
+                            }}>
                             Log in
                         </button>
                     </Link>
                     <span className='cursor-pointer underline underline-offset-4'>Forgot my password</span>
                     <button 
                         className='border border-black disabled:border-black/40 disabled:text-black/40 w-full h-10 rounded-lg font-semibold'
-                        onClick={() => setView('create-user-info')}
+                        onClick={() => {
+                            setView('create-user-info')
+                            context.setCategory(null)
+                        }}
                         disabled={hasUserAnAccount}>
                         Sign up
                     </button>
@@ -112,7 +118,10 @@ function SignIn () {
                 </div>
                 <Link to='/'>
                     <button 
-                        onClick={() => createAccount()}
+                        onClick={() => {
+                            createAccount()
+                            handleSignIn()
+                        }}
                         className='w-full h-8 bg-black rounded-lg px-2 pb-1 text-white text-sm'>
                         Create
                     </button>

@@ -16,8 +16,8 @@ const initializeLocalStorage = () => {
     }
 
     if(!signOutInLocalStorage) {
-        localStorage.setItem('sign-out', JSON.stringify(false))
-        parsedSignOut = false
+        localStorage.setItem('sign-out', JSON.stringify(true))
+        parsedSignOut = true
     } else {
         parsedSignOut = JSON.parse(signOutInLocalStorage)
     }
@@ -28,7 +28,7 @@ function ShoppingCartProvider ({children}) {
     const [account, setAccount] = useState({})
 
     //Sign Out
-    const [signOut, setSignOut] = useState(false)
+    const [signOut, setSignOut] = useState(true)
 
     //Get Products
     const [items, setItems] = useState(null)
